@@ -1,0 +1,251 @@
+/* إعدادات الخطوط والصفحة العامة مستوحاة من نغمة نظام iOS */
+@import url('https://googleapis.com');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+    -webkit-tap-highlight-color: transparent; /* إلغاء الوميض الأزرق عند الضغط في الآيفون */
+}
+
+body {
+    background-color: #f2f2f7; /* لون خلفية نظام iOS الشهير */
+    color: #000000;
+    display: flex;
+    justify-content: center;
+}
+
+/* حاوية التطبيق لتبدو كأنها شاشة هاتف احترافية */
+.app-container {
+    width: 100%;
+    max-width: 480px;
+    background-color: #ffffff;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 90px; /* مسافة فارغة في الأسفل عشان شريط التنقل */
+    box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
+
+/* الشريط العلوي - الهيدر */
+.app-header {
+    padding: 20px 16px 12px 16px;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px); /* تأثير الزجاج الضبابي مثل الآيفون */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #e5e5ea;
+}
+
+.app-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1c1c1e;
+}
+
+/* شريط البحث */
+.search-bar {
+    background-color: #7676801f; /* لون حقل البحث في الـ iOS */
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+}
+
+.search-bar i {
+    color: #3c3c4399;
+    margin-left: 8px;
+}
+
+.search-bar input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    outline: none;
+    font-size: 15px;
+}
+
+/* المحتوى */
+.main-content {
+    padding: 16px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1c1c1e;
+}
+
+/* قوائم الأقسام التمرير الأفقي */
+.categories-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 12px;
+    padding-bottom: 8px;
+}
+
+.categories-scroll::-webkit-scrollbar {
+    display: none; /* إخفاء شريط التمرير المزعج */
+}
+
+.category-item {
+    background-color: #f2f2f7;
+    padding: 10px 16px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.category-item i {
+    font-size: 16px;
+    color: #3a3a3c;
+}
+
+.category-item.active {
+    background-color: #007aff; /* اللون الأزرق الرسمي لـ Apple */
+    color: #ffffff;
+}
+
+.category-item.active i {
+    color: #ffffff;
+}
+
+/* شبكة المنتجات */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.product-card {
+    background: #ffffff;
+    border: 1px solid #e5e5ea;
+    border-radius: 16px; /* زوايا دائرية ناعمة */
+    padding: 12px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease;
+}
+
+.product-card:active {
+    transform: scale(0.97); /* إيماءة ضغط مرنة عند اللمس */
+}
+
+.product-card .badge {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: #ff3b30; /* اللون الأحمر للإشعارات */
+    color: white;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+.product-image {
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fbfbfd;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.product-info .product-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1c1c1e;
+    line-height: 1.4;
+    height: 40px;
+    overflow: hidden;
+}
+
+.product-info .product-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #007aff;
+    margin: 6px 0;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    background-color: #f2f2f7;
+    color: #007aff;
+    border: none;
+    padding: 8px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #007aff;
+    color: white;
+}
+
+/* شريط التنقل السفلي الثابت (iOS Tab Bar) */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 480px;
+    height: 65px;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid #d1d1d6;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #8e8e93;
+    text-decoration: none;
+    font-size: 11px;
+    position: relative;
+    width: 25%;
+}
+
+.nav-item i {
+    font-size: 20px;
+    margin-bottom: 3px;
+}
+
+.nav-item.active {
+    color: #007aff; /* العنصر النشط يتلون بالأزرق */
+}
+
+/* شارة عدد منتجات السلة */
+.nav-item .cart-badge {
+    position: absolute;
+    top: -4px;
+    right: 32px;
+    background-color: #ff3b30;
+    color: white;
+    font-size: 10px;
+    min-width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
